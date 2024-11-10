@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://byki8v50pyox7"]
+
+[ext_resource type="Texture2D" uid="uid://besdn87l4o645" path="res://assets/sala de aula.png" id="1_8b1k1"]
+[ext_resource type="Script" path="res://renam.gd" id="2_c2rxn"]
+[ext_resource type="Texture2D" uid="uid://ch6vydxemgrv0" path="res://assets/l0_sprite_jogador1.png" id="2_r3c7g"]
+[ext_resource type="Texture2D" uid="uid://bcewpfdj51m3i" path="res://assets/l0_sprite_jogador2.png" id="4_2wqf6"]
+[ext_resource type="Texture2D" uid="uid://dkb3v18ep1wim" path="res://assets/l0_sprite_jogador3.png" id="5_0cbmn"]
+[ext_resource type="PackedScene" uid="uid://bvldjow52hd58" path="res://bolinha.tscn" id="6_83moa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5qej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r3c7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r3c7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2wqf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0cbmn")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[node name="game" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="SalaDeAula" type="Sprite2D" parent="."]
+position = Vector2(-202, -66)
+scale = Vector2(1.46563, 1.14227)
+texture = ExtResource("1_8b1k1")
+centered = false
+
+[node name="renam" type="Node2D" parent="."]
+position = Vector2(330, 622)
+scale = Vector2(-0.812, 0.5)
+script = ExtResource("2_c2rxn")
+metadata/_edit_group_ = true
+
+[node name="bolinha" parent="renam" instance=ExtResource("6_83moa")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="renam"]
+position = Vector2(190.599, -196.316)
+scale = Vector2(0.556747, 1.09672)
+sprite_frames = SubResource("SpriteFrames_v5qej")
